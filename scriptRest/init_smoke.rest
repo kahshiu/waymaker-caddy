@@ -1,0 +1,14 @@
+#######
+# 1. scan the file server
+# 2. check the connectivity of database from dbeaver
+# 3. scan proxied /api path to backend-api server
+# 4. scan proxied deno web application
+GET http://localhost/www/index.html
+
+#######
+
+GET http://localhost:8000/api/diagnostic/version
+
+#######
+
+GET http://localhost:8000/
