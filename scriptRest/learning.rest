@@ -1,0 +1,58 @@
+GET http://localhost:80
+
+
+##########
+# only works for mac local machine installation
+# 1. brew install caddy
+# 2. exec "caddy run" 
+# 3. run below to see that config is initialised to empty
+
+GET http://localhost:2019/config/
+
+
+##########
+# 4. load configs into caddy
+# 5. check that config is loaded
+# 6. test response of config
+
+POST http://localhost:2019/load HTTP/1.1
+content-type: application/json
+
+{
+	"apps": {
+		"http": {
+			"servers": {
+				"example": {
+					"listen": [":2015"],
+					"routes": [
+						{
+							"handle": [{
+								"handler": "static_response",
+								"body": "Hello, world!"
+							}]
+						}
+					]
+				}
+			}
+		}
+	}
+}
+
+
+#####
+GET http://localhost:2019/config/ HTTP/1.1
+content-type: application/json
+
+####
+GET http://localhost:2015
+
+####
+# 1. attempt to use Caddyfile
+# 2. write the config, format by using following terminal:
+#    caddy fmt --overwrite /Users/kahshiu.chong/Documents/my-app-all/myCaddy/scriptRest/Caddyfile -- write the config
+#    caddy adapt --config /Users/kahshiu.chong/Documents/my-app-all/myCaddy/scriptRest/Caddyfile -- this will convert into json config
+#    caddy run --config /Users/kahshiu.chong/Documents/my-app-all/myCaddy/scriptRest/Caddyfile -- utilise config
+
+## 3. caddy start ## this will run as background service
+## 4. caddy stop
+## 5. caddy reload ## no downtime
