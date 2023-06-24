@@ -1,6 +1,7 @@
 http://localhost:80 {
 	root * /usr/share/caddy/
 	file_server
+}
 
 http://localhost:8000 {
 	reverse_proxy /* http://frontend-web:8000
