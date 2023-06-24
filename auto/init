@@ -1,0 +1,6 @@
+# ensure clean folders
+rm -rf ./config
+rm -rf ./data
+
+mkdir ./config
+mkdir ./data
